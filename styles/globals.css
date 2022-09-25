@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.vl {
+  border-left: 3px solid lightgray;
+}
