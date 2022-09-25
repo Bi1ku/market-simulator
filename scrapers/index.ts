@@ -1,7 +1,7 @@
-import { Builder, Browser, By, Key, until } from "selenium-webdriver";
-import "chromedriver";
+import { Builder, Browser, By, Key, until } from 'selenium-webdriver';
+import 'chromedriver';
 
-(async function example() {
+const scraper = async () => {
   let driver = await new Builder().forBrowser(Browser.CHROME).build();
   try {
     await driver.get('http://www.google.com/ncr');
@@ -10,4 +10,6 @@ import "chromedriver";
   } finally {
     await driver.quit();
   }
-})();
+};
+
+scraper();

@@ -12,7 +12,10 @@ const Home: NextPage = () => {
         />
       </Head>
       <div className='p-5 grid place-items-center'>
-        <span className='text-2xl'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa, minima laborum? Vero laudantium saepe voluptas?</span>
+        <span className='text-2xl'>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa, minima
+          laborum? Vero laudantium saepe voluptas?
+        </span>
       </div>
     </div>
   );

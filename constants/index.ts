@@ -1,1 +1,1 @@
-export const CONSTANT = "constant";
+export const WEBSCRAPE_URL = 'https://www.google.com/finance/';
