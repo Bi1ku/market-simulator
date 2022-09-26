@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import React from 'react';
-
-type Props = {};
+import { Props } from '../constants/types';
 
 const StockIcon = (props: Props) => {
   return (
@@ -12,6 +11,7 @@ const StockIcon = (props: Props) => {
           alt='stock logo'
           height={30}
           width={30}
+          priority
         />
         <div className='ml-2 text-xs'>
           <h6 className='font-bold'>S&P 500</h6>
