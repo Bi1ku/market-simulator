@@ -23,7 +23,6 @@ const Navbar = (props: Props) => {
   return (
     <Transition
       show={isMount}
-      appear={true}
       enter='transition-opacity duration-1000'
       enterFrom='opacity-0'
       enterTo='opacity-100'
