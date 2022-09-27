@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 import StockIcon from './StockIcon';
@@ -30,7 +29,7 @@ const Navbar = (props: Props) => {
       leaveFrom='opacity-100'
       leaveTo='opacity-0'
     >
-      <div className='fixed h-full p-5'>
+      <div className='fixed h-screen p-5 shadow-xl bg-white' id='#navbar'>
         {/* Logo Title */}
         <Image
           src='/assets/logo.jpg'

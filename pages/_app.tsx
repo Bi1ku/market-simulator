@@ -1,13 +1,16 @@
 import '../styles/globals.css';
 import type { AppProps } from 'next/app';
+import Header from '../components/Header';
 import Navbar from '../components/Navbar';
-import { Transition } from '@headlessui/react';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Navbar />
-      <Component {...pageProps} />
+      <div className='h-screen ml-[253px]'>
+        <Header />
+        <Component {...pageProps} />
+      </div>
     </>
   );
 }
