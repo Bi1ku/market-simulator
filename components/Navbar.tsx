@@ -29,7 +29,7 @@ const Navbar = (props: Props) => {
       leaveFrom='opacity-100'
       leaveTo='opacity-0'
     >
-      <div className='fixed h-screen p-5 shadow-xl bg-white' id='#navbar'>
+      <div className='fixed h-screen p-5 shadow-xl bg-white'>
         {/* Logo Title */}
         <Image
           src='/assets/logo.jpg'

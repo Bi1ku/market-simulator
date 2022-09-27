@@ -5,11 +5,3 @@
 .vl {
   border-left: 3px solid lightgray;
 }
-
-.h-inherit {
-  height: inherit;
-}
-
-.w-inherit {
-  width: inherit;
-}
