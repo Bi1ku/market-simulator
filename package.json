@@ -14,11 +14,13 @@
     "@headlessui/react": "^1.7.2",
     "@heroicons/react": "^2.0.11",
     "@prisma/client": "^4.2.1",
+    "axios": "^0.27.2",
     "chromedriver": "^105.0.1",
     "next": "12.2.5",
     "node-cron": "^3.0.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "recharts": "^2.1.14",
     "selenium-webdriver": "^4.4.0"
   },
   "devDependencies": {

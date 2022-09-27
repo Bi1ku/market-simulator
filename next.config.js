@@ -9,7 +9,12 @@ const nextConfig = {
       'www.google.com',
       'cdn3.iconfinder.com',
       'github.githubassets.com',
+      'www.clipartmax.com',
+      'asset.brandfetch.io',
     ],
+  },
+  env: {
+    BRANDFETCH_API_KEY: process.env.BRANDFETCH_API_KEY,
   },
 };
 
