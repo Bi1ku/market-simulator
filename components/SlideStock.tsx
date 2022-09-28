@@ -14,7 +14,7 @@ const SlideStock = (props: Props) => {
     return response.logos[0].formats[0].src;
   };
   return (
-    <div className='bg-[#F6F7F9] flex flex-col w-[320px] rounded-2xl p-4'>
+    <div className='bg-[#F6F7F9] flex flex-col rounded-2xl p-4'>
       <div className='flex justify-between'>
         <div className='bg-black rounded-full px-3 py-2 flex items-center'>
           <Image
