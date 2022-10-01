@@ -10,7 +10,7 @@ import SlideStock from '../components/SlideStock';
 
 const Home: NextPage = () => {
   return (
-    <div className='h-max p-10'>
+    <div className='p-10'>
       <Transition.Child
         enter='transition-opacity delay-100 duration-1000'
         enterFrom='opacity-0'
@@ -79,7 +79,7 @@ const Home: NextPage = () => {
             </span>
             <ReceiptPercentIcon className='w-10 h-10 text-gray-400' />
           </div>
-          <div className='bg-white h-full w-full rounded-xl p-4 flex items-center justify-between'>
+          <a className='bg-white h-full w-full rounded-xl p-4 flex items-center justify-between cursor-pointer' href='https://www.marketwatch.com/' target="_blank" rel="noreferrer">
             <div className='font-semibold text-gray-500 text-sm'>
               <span className='uppercase'>News</span>
               <div className='text-sm mt-2 font-semibold text-black'>
@@ -87,7 +87,7 @@ const Home: NextPage = () => {
               </div>
             </div>
             <ArrowTopRightOnSquareIcon className='w-10 h-10 text-gray-400' />
-          </div>
+          </a>
         </div>
       </Transition.Child>
     </div>
