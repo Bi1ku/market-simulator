@@ -19,7 +19,7 @@ const Home: NextPage = () => {
         leaveFrom='opacity-100'
         leaveTo='opacity-0'
       >
-        <h2 className='font-semibold text-lg mb-5'>Your Stock Portfolio</h2>
+        <h2 className='font-semibold text-lg mb-5'>Your Stock Portfolio 📈</h2>
         <div className='bg-white p-4 rounded-2xl grid grid-cols-3 gap-4'>
           <SlideStock />
           <SlideStock />
@@ -35,7 +35,7 @@ const Home: NextPage = () => {
         leaveTo='opacity-0'
       >
         <h2 className='font-semibold text-lg mb-5 mt-5'>
-          Your Crypto Portfolio
+          Your Crypto Portfolio ⚡️
         </h2>
         <div className='bg-white p-4 rounded-2xl grid grid-cols-3 gap-4'>
           <SlideStock />
@@ -79,7 +79,12 @@ const Home: NextPage = () => {
             </span>
             <ReceiptPercentIcon className='w-10 h-10 text-gray-400' />
           </div>
-          <a className='bg-white h-full w-full rounded-xl p-4 flex items-center justify-between cursor-pointer' href='https://www.marketwatch.com/' target="_blank" rel="noreferrer">
+          <a
+            className='bg-white h-full w-full rounded-xl p-4 flex items-center justify-between cursor-pointer'
+            href='https://www.marketwatch.com/'
+            target='_blank'
+            rel='noreferrer'
+          >
             <div className='font-semibold text-gray-500 text-sm'>
               <span className='uppercase'>News</span>
               <div className='text-sm mt-2 font-semibold text-black'>

@@ -1,20 +1,28 @@
 import axios from 'axios';
 import Image from 'next/image';
-import React, { useEffect } from 'react';
-import { BRANDFETCH_BASE_API, config } from '../constants';
+import { useRouter } from 'next/router';
+import React from 'react';
+import { BRANDFETCH_BASE_API } from '../constants';
+import { brandfetchConfig } from '../constants/config';
 
 type Props = {};
 
 const SlideStock = (props: Props) => {
+  const router = useRouter();
+
   const getLogos = async (domain: string): Promise<string> => {
     const { data: response } = await axios.get(
       `${BRANDFETCH_BASE_API}${domain}`,
-      config,
+      brandfetchConfig,
     );
     return response.logos[0].formats[0].src;
   };
+
   return (
-    <div className='bg-[#F6F7F9] flex flex-col rounded-2xl p-4'>
+    <div
+      className='bg-[#F6F7F9] flex flex-col rounded-2xl p-4 cursor-pointer'
+      onClick={() => router.push('/exchange/AAPL')}
+    >
       <div className='flex justify-between'>
         <div className='bg-black rounded-full px-3 py-2 flex items-center'>
           <Image

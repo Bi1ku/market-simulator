@@ -22,7 +22,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         leaveTo='opacity-0'
       >
         <Navbar />
-        <div className='h-screen ml-[253px] bg-[#F6F7F9]'>
+        <div className='h-screen flex flex-col ml-[253px] bg-[#F6F7F9]'>
           <Header />
           <Component {...pageProps} />
         </div>
