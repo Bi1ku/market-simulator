@@ -1,19 +1,27 @@
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
   previewFeatures = ["referentialIntegrity", "interactiveTransactions"]
 }
 
 datasource db {
-  provider = "mysql"
-  url      = env("DATABASE_URL")
+  provider             = "mysql"
+  url                  = env("DATABASE_URL")
   referentialIntegrity = "prisma"
 }
 
 model User {
-  id       Int      @id @default(autoincrement())
-  email    String   @unique
+  id       Int     @id @default(autoincrement())
+  email    String  @unique
   name     String?
   password String
-  username String   @unique
-  currency Int      @default(10000)
+  username String  @unique
+  currency Int     @default(10000)
+  // One to many relation; the [] next to the model indiacted this.
+  stocks   Stock[]
+}
+
+model Stock {
+  ticker  String @id @db.VarChar(5) // Ticker can only be at most 5 characters
+  owner   User   @relation(fields: [ownerId], references: [id])
+  ownerId Int    @unique
 }

@@ -20,7 +20,7 @@ const Navbar = (props: Props) => {
   }, []);
   const router = useRouter();
   return (
-    <div className='fixed h-screen p-5 shadow-xl bg-white'>
+    <div className="fixed h-screen p-5 shadow-xl bg-white">
       {/* Logo Title */}
       <Image
         src='/assets/logo.jpg'
@@ -51,7 +51,7 @@ const Navbar = (props: Props) => {
             router.pathname === '/'
               ? 'bg-gray-100'
               : 'hover:bg-gray-100 duration-300 cursor-pointer'
-          } rounded-lg`}
+          } rounded-lg ${router.pathname.includes("/auth")}`}
           onClick={() => router.push('/')}
         >
           <HomeIcon className='w-6 h-6 text-gray-400' />

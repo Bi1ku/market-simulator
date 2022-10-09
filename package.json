@@ -19,14 +19,16 @@
     "@heroicons/react": "^2.0.11",
     "@prisma/client": "^4.2.1",
     "@types/bcrypt": "^5.0.0",
+    "@types/recharts": "^1.8.23",
     "axios": "^0.27.2",
     "bcrypt": "^5.0.1",
     "chromedriver": "^105.0.1",
+    "dayjs": "^1.11.5",
     "next": "12.2.5",
     "node-cron": "^3.0.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "recharts": "^2.1.14",
+    "recharts": "2.1.12",
     "selenium-webdriver": "^4.4.0"
   },
   "devDependencies": {
