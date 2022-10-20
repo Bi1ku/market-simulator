@@ -11,6 +11,7 @@ const nextConfig = {
       'github.githubassets.com',
       'www.clipartmax.com',
       'asset.brandfetch.io',
+      'media.tenor.com',
     ],
   },
   env: {
