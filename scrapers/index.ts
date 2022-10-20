@@ -24,7 +24,7 @@ export const scraper = async (ticker: string) => {
     );
     for (let i = 0; i < data.length; i++) {
       const stockDataText = (await data[i].getText()).split(' ');
-      if (stockDataText[4] !== 'Dividend')
+      if (stockDataText.length === 9)
         formattedData.push({
           name: `${stockDataText[0]} ${stockDataText[1]} ${stockDataText[2]}`,
           open: stockDataText[3],

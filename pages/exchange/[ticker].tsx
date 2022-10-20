@@ -60,7 +60,7 @@ const Ticker = (props: Props) => {
   const router = useRouter();
   const { ticker } = router.query;
   const [chartData, setChartData] = useState<ChartData[]>();
-  const [loading, setLoading] = useState(false); // Redux later => global states
+  const [loading, setLoading] = useState(true); // Redux later => global states
   const [period, setPeriod] = useState<Periods>('3_MONTHS');
 
   useEffect(() => {
@@ -78,6 +78,7 @@ const Ticker = (props: Props) => {
     if (period === '3_MONTHS') {
       return chartData?.slice(0, 90);
     } else if (period === '1_YEAR') {
+      console.log(chartData);
       return chartData;
     } else if (period === '1_MONTH') {
       return chartData?.slice(0, 30);
@@ -123,7 +124,7 @@ const Ticker = (props: Props) => {
             1 Month
           </div>
           <div
-            className={`w-full p-4 bg-white hover:bg-gray-50 duration-300 cursor-pointe grid place-items-center ${
+            className={`w-full p-4 cursor-pointer bg-white hover:bg-gray-50 duration-300 cursor-pointe grid place-items-center ${
               period === '3_MONTHS' && 'bg-gray-50'
             }`}
             onClick={() => setPeriod('3_MONTHS')}
