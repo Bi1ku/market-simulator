@@ -16,6 +16,8 @@ import { NameType } from 'recharts/types/component/DefaultTooltipContent';
 import dayjs from 'dayjs';
 import axios from 'axios';
 import Image from 'next/image';
+import { useHookstate } from '@hookstate/core';
+import { globalLoading } from '../_app';
 
 type BaseValueType = number | 'auto' | 'dataMin' | 'dataMax';
 type Props = {};
@@ -60,51 +62,33 @@ const Ticker = (props: Props) => {
   const router = useRouter();
   const { ticker } = router.query;
   const [chartData, setChartData] = useState<ChartData[]>();
-  const [loading, setLoading] = useState(true); // Redux later => global states
+  const loading = useHookstate(globalLoading);
   const [period, setPeriod] = useState<Periods>('3_MONTHS');
 
   useEffect(() => {
     const fetchStockData = async () => {
+      loading.set(true);
       const data = await axios.get('/api/stocks', {
         params: { ticker },
       });
       setChartData(data.data);
-      setLoading(false);
+      loading.set(false);
     };
-    if (ticker) fetchStockData();
+    if (ticker && !chartData) fetchStockData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [ticker]);
 
   const handleTimePeriod = (period: Periods) => {
     if (period === '3_MONTHS') {
       return chartData?.slice(0, 90);
     } else if (period === '1_YEAR') {
-      console.log(chartData);
       return chartData;
     } else if (period === '1_MONTH') {
       return chartData?.slice(0, 30);
     }
   };
 
-  return loading ? (
-    <div className='p-10 h-full grid place-items-center'>
-      <Transition.Child
-        enter='transition-opacity delay-100 duration-1000'
-        enterFrom='opacity-0'
-        enterTo='opacity-100'
-        leave='transition-opacity delay-100 duration-1000'
-        leaveFrom='opacity-100'
-        leaveTo='opacity-0'
-      >
-        <Image
-          src='https://media.tenor.com/pgO8hZgOW5AAAAAM/loading-bar.gif'
-          className='rounded-3xl'
-          width={880}
-          height={460}
-          alt='loading'
-        />
-      </Transition.Child>
-    </div>
-  ) : (
+  return (
     <div className='p-10'>
       <Transition.Child
         enter='transition-opacity delay-100 duration-1000'

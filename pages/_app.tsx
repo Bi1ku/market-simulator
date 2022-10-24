@@ -4,8 +4,13 @@ import Header from '../components/Header';
 import Navbar from '../components/Navbar';
 import { Transition } from '@headlessui/react';
 import { useEffect, useState } from 'react';
+import { hookstate, useHookstate } from '@hookstate/core';
+import Image from 'next/image';
+
+export const globalLoading = hookstate(false);
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const loading = useHookstate(globalLoading);
   const [isMount, setIsMount] = useState(false);
   useEffect(() => {
     setIsMount(true);
@@ -24,7 +29,29 @@ function MyApp({ Component, pageProps }: AppProps) {
         <Navbar />
         <div className='h-screen flex flex-col ml-[253px] bg-[#F6F7F9]'>
           <Header />
-          <Component {...pageProps} />
+          {loading.value && (
+            <div className='p-10 h-full grid place-items-center'>
+              <Transition.Child
+                enter='transition-opacity delay-100 duration-1000'
+                enterFrom='opacity-0'
+                enterTo='opacity-100'
+                leave='transition-opacity delay-100 duration-1000'
+                leaveFrom='opacity-100'
+                leaveTo='opacity-0'
+              >
+                <Image
+                  src='https://media.tenor.com/pgO8hZgOW5AAAAAM/loading-bar.gif'
+                  className='rounded-3xl'
+                  width={880}
+                  height={460}
+                  alt='loading'
+                />
+              </Transition.Child>
+            </div>
+          )}
+          <div className={loading.value ? 'hidden' : ''}>
+            <Component {...pageProps} />
+          </div>
         </div>
       </Transition>
     </>
