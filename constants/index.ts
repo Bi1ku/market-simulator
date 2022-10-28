@@ -1,6 +1,15 @@
-export const WEBSCRAPE_URL = 'https://www.google.com/finance/';
-
-export const LOGO_URL =
-  'https://placeholder.com/wp-content/uploads/2018/10/placeholder.com-logo3.jpg';
+import axios from 'axios';
 
 export const BRANDFETCH_BASE_API = 'https://api.brandfetch.io/v2/brands/';
+
+export type Props = {};
+
+export const customAxios = axios.create({
+  baseURL: 'http://localhost:3000/api',
+});
+
+export const brandFetchConfig = {
+  headers: {
+    Authorization: `Bearer ${process.env.BRANDFETCH_API_KEY}`,
+  },
+};

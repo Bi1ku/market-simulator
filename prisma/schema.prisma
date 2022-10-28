@@ -12,9 +12,9 @@ datasource db {
 model User {
   id       Int     @id @default(autoincrement())
   email    String  @unique
-  name     String?
+  firstName String
+  lastName String
   password String
-  username String  @unique
   currency Int     @default(10000)
   // One to many relation; the [] next to the model indiacted this.
   stocks   Stock[]

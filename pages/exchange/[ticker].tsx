@@ -13,11 +13,9 @@ import {
   Area,
 } from 'recharts';
 import { NameType } from 'recharts/types/component/DefaultTooltipContent';
-import dayjs from 'dayjs';
-import axios from 'axios';
-import Image from 'next/image';
 import { useHookstate } from '@hookstate/core';
 import { globalLoading } from '../_app';
+import { customAxios } from '../../constants';
 
 type BaseValueType = number | 'auto' | 'dataMin' | 'dataMax';
 type Props = {};
@@ -68,7 +66,7 @@ const Ticker = (props: Props) => {
   useEffect(() => {
     const fetchStockData = async () => {
       loading.set(true);
-      const data = await axios.get('/api/stocks', {
+      const data = await customAxios.get('/stocks', {
         params: { ticker },
       });
       setChartData(data.data);

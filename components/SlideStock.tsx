@@ -2,8 +2,7 @@ import axios from 'axios';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import React from 'react';
-import { BRANDFETCH_BASE_API } from '../constants';
-import { brandfetchConfig } from '../constants/config';
+import { BRANDFETCH_BASE_API, brandFetchConfig } from '../constants';
 
 type Props = {};
 
@@ -13,7 +12,7 @@ const SlideStock = (props: Props) => {
   const getLogos = async (domain: string): Promise<string> => {
     const { data: response } = await axios.get(
       `${BRANDFETCH_BASE_API}${domain}`,
-      brandfetchConfig,
+      brandFetchConfig,
     );
     return response.logos[0].formats[0].src;
   };
