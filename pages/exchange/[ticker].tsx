@@ -14,8 +14,7 @@ import {
 } from 'recharts';
 import { NameType } from 'recharts/types/component/DefaultTooltipContent';
 import { useHookstate } from '@hookstate/core';
-import { globalLoading } from '../_app';
-import { customAxios } from '../../constants';
+import { customAxios, globalLoading } from '../../constants';
 
 type BaseValueType = number | 'auto' | 'dataMin' | 'dataMax';
 type Props = {};
@@ -73,8 +72,7 @@ const Ticker = (props: Props) => {
       loading.set(false);
     };
     if (ticker && !chartData) fetchStockData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [ticker]);
+  }, [ticker]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleTimePeriod = (period: Periods) => {
     if (period === '3_MONTHS') {

@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import React from 'react';
-import { Props } from '../constants/types';
+
+type Props = {};
 
 const StockIcon = (props: Props) => {
   return (

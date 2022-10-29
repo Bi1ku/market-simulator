@@ -10,18 +10,17 @@ datasource db {
 }
 
 model User {
-  id       Int     @id @default(autoincrement())
+  id       String  @unique @id @default(uuid())
   email    String  @unique
   firstName String
   lastName String
   password String
   currency Int     @default(10000)
-  // One to many relation; the [] next to the model indiacted this.
   stocks   Stock[]
 }
 
 model Stock {
-  ticker  String @id @db.VarChar(5) // Ticker can only be at most 5 characters
+  ticker  String @id @db.VarChar(5)
   owner   User   @relation(fields: [ownerId], references: [id])
-  ownerId Int    @unique
+  ownerId String    @unique
 }

@@ -19,7 +19,7 @@ const SlideStock = (props: Props) => {
 
   return (
     <div
-      className='bg-[#F6F7F9] flex flex-col rounded-2xl p-4 cursor-pointer'
+      className='bg-[#F6F7F9] flex flex-col rounded-2xl p-4 cursor-pointer transform hover:-translate-y-1 duration-300'
       onClick={() => router.push('/exchange/AAPL')}
     >
       <div className='flex justify-between'>

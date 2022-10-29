@@ -11,7 +11,8 @@ import {
 } from '@heroicons/react/24/outline';
 import { Disclosure, Transition } from '@headlessui/react';
 import { useRouter } from 'next/router';
-import { Props } from '../constants/types';
+
+type Props = {};
 
 const Navbar = (props: Props) => {
   const [isMount, setIsMount] = useState(false);
@@ -20,7 +21,7 @@ const Navbar = (props: Props) => {
   }, []);
   const router = useRouter();
   return (
-    <div className="fixed h-screen p-5 shadow-xl bg-white">
+    <div className='fixed h-screen p-5 shadow-xl bg-white'>
       {/* Logo Title */}
       <Image
         src='/assets/logo.jpg'
@@ -51,7 +52,7 @@ const Navbar = (props: Props) => {
             router.pathname === '/'
               ? 'bg-gray-100'
               : 'hover:bg-gray-100 duration-300 cursor-pointer'
-          } rounded-lg ${router.pathname.includes("/auth")}`}
+          } rounded-lg ${router.pathname.includes('/auth')}`}
           onClick={() => router.push('/')}
         >
           <HomeIcon className='w-6 h-6 text-gray-400' />

@@ -9,9 +9,9 @@ export default async function handler(
   try {
     if (req.method === 'GET') {
       const response = await scraper(req.query.ticker as string);
-      res.status(200).json(response);
+      res.json({ success: true, data: response });
     }
   } catch (e) {
-    res.status(500).json(e);
+    res.json({ sucess: false, data: e });
   }
 }
