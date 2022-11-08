@@ -11,15 +11,15 @@ import {
 } from '@heroicons/react/24/outline';
 import { Disclosure, Transition } from '@headlessui/react';
 import { useRouter } from 'next/router';
+import { emptyUser } from '../constants';
+import { localstored } from '@hookstate/localstored';
+import { useHookstate } from '@hookstate/core';
 
 type Props = {};
 
 const Navbar = (props: Props) => {
-  const [isMount, setIsMount] = useState(false);
-  useEffect(() => {
-    setIsMount(true);
-  }, []);
   const router = useRouter();
+
   return (
     <div className='fixed h-screen p-5 shadow-xl bg-white'>
       {/* Logo Title */}

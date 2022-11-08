@@ -1,4 +1,6 @@
 import { hookstate } from '@hookstate/core';
+import { localstored } from '@hookstate/localstored';
+import { User } from '@prisma/client';
 import axios from 'axios';
 
 export const BRANDFETCH_BASE_API = 'https://api.brandfetch.io/v2/brands/';
@@ -15,7 +17,7 @@ export const brandFetchConfig = {
   },
 };
 
-export const globalLoading = hookstate(false);
+export const globalLoading = hookstate<boolean>(false);
 
 interface Notification {
   title?: string;
@@ -32,3 +34,12 @@ export const defaultNotification: Notification = {
 };
 
 export const globalNotification = hookstate<Notification>(defaultNotification);
+
+export const emptyUser: User = {
+  id: '',
+  email: '',
+  firstName: '',
+  lastName: '',
+  password: '',
+  currency: 0,
+};

@@ -65,10 +65,10 @@ const Ticker = (props: Props) => {
   useEffect(() => {
     const fetchStockData = async () => {
       loading.set(true);
-      const data = await customAxios.get('/stocks', {
+      const { data: response } = await customAxios.get('/stocks', {
         params: { ticker },
       });
-      setChartData(data.data);
+      setChartData(response.data);
       loading.set(false);
     };
     if (ticker && !chartData) fetchStockData();

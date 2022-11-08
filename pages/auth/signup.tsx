@@ -1,10 +1,8 @@
 import { Transition } from '@headlessui/react';
-import { useHookstate } from '@hookstate/core';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 import React, { useState } from 'react';
-import { customAxios, globalNotification } from '../../constants';
+import { customAxios } from '../../constants';
 import { error, success } from '../../helpers';
 
 type Props = {};
@@ -14,8 +12,6 @@ const Login = (props: Props) => {
   const [email, setEmail] = useState('');
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
-  const router = useRouter();
-  const notification = useHookstate(globalNotification);
 
   const handleCreateUser = async (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
@@ -29,8 +25,8 @@ const Login = (props: Props) => {
         lastName,
       });
       if (response.success) {
-        localStorage.setItem('id', response.data.id);
-        router.push('/');
+        localStorage.setItem('user', JSON.stringify(response.data));
+        window.location.href = '/'; // using window to trigger page reload & therefore transitions.
         success("You've created your account!");
       }
     } catch (e) {

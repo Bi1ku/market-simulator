@@ -1,9 +1,11 @@
 import { Transition } from '@headlessui/react';
+import { useHookstate } from '@hookstate/core';
+import { localstored } from '@hookstate/localstored';
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useState } from 'react';
-import { customAxios } from '../../constants';
-import { error } from '../../helpers';
+import { customAxios, emptyUser } from '../../constants';
+import { error, success } from '../../helpers';
 
 type Props = {};
 
@@ -21,8 +23,9 @@ const Login = (props: Props) => {
         password,
       });
       if (response.success) {
-        localStorage.setItem('id', response.data.data.id);
-        window.location.href = '/';
+        localStorage.setItem('user', JSON.stringify(response.data));
+        window.location.href = '/'; // using window to trigger page reload & therefore transitions.
+        success("You've logged into your account!");
       }
     } catch (e) {
       error();
@@ -107,7 +110,7 @@ const Login = (props: Props) => {
                       id='remember-me'
                       name='remember-me'
                       type='checkbox'
-                      className='h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500'
+                      className='h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500 cursor-not-allowed'
                     />
                     <label
                       htmlFor='remember-me'

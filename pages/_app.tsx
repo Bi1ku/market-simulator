@@ -3,11 +3,11 @@ import type { AppProps } from 'next/app';
 import Header from '../components/Header';
 import Navbar from '../components/Navbar';
 import { Transition } from '@headlessui/react';
-import { useEffect, useInsertionEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useHookstate } from '@hookstate/core';
 import { useRouter } from 'next/router';
 import Loading from '../components/Loading';
-import { customAxios, globalLoading, globalNotification } from '../constants';
+import { globalLoading } from '../constants';
 import Notification from '../components/Notification';
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -16,19 +16,8 @@ function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
 
   useEffect(() => {
-    const id = localStorage.getItem('id');
-
-    const checkValidUser = async () => {
-      const user = await customAxios.get(
-        `/users/${localStorage.getItem('id')}`,
-      );
-      if (user.data.success) {
-        localStorage.setItem('user', JSON.stringify(user.data.user));
-        setIsMount(true);
-      } else router.push('/auth/login');
-    };
-    if (id) checkValidUser();
-    else router.push('/auth/login');
+    if (!localStorage.getItem('user')) router.push('/auth/login');
+    setIsMount(true);
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (

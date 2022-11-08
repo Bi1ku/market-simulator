@@ -1,14 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { BellIcon, MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 import Image from 'next/image';
+import { useHookstate } from '@hookstate/core';
+import { localstored } from '@hookstate/localstored';
+import { emptyUser } from '../constants';
+import { formatFullName } from '../helpers';
 
 type Props = {};
 
 const Header = (props: Props) => {
-  const [isMount, setIsMount] = useState(false);
-  useEffect(() => {
-    setIsMount(true);
-  }, []);
+  const user = useHookstate(emptyUser, localstored({ key: 'user' }));
+
   return (
     <div className='flex items-center justify-between px-8 pb-5 pt-5 shadow-lg bg-white'>
       <div className='bg-gray-50 relative rounded-xl shadow-sm w-4/12 p-3'>
@@ -41,10 +43,10 @@ const Header = (props: Props) => {
           />
           <div className='ml-3 flex flex-col justify-center'>
             <span className='text-gray-600 font-semibold text-sm'>
-              John Doe
+              {formatFullName(user.value)}
             </span>
             <span className='text-gray-400 text-xs font-semibold'>
-              johndoe123@gmail.com
+              {user.value.email}
             </span>
           </div>
         </div>

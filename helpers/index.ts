@@ -1,3 +1,4 @@
+import { User } from '@prisma/client';
 import { globalNotification } from '../constants';
 
 export const success = (description: string) => {
@@ -17,3 +18,6 @@ export const error = (description?: string) => {
     show: true,
   });
 };
+
+export const formatFullName = (user: User) =>
+  `${user.firstName} ${user.lastName}`;
