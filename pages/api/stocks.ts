@@ -1,6 +1,8 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
+import { PrismaClient } from '@prisma/client';
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { scraper } from '../../scrapers';
+
+const prisma = new PrismaClient();
 
 export default async function handler(
   req: NextApiRequest,
@@ -8,10 +10,17 @@ export default async function handler(
 ) {
   try {
     if (req.method === 'GET') {
-      const response = await scraper(req.query.ticker as string);
-      res.json({ success: true, data: response });
+      const data = await prisma.stock.findUnique({
+        where: {
+          ticker: req.query.ticker as string,
+        },
+        include: {
+          stockData: true,
+        },
+      });
+      return res.json({ success: true, data });
     }
   } catch (e) {
-    res.json({ sucess: false, data: e });
+    res.json({ success: false, data: e });
   }
 }

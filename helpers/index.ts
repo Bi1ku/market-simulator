@@ -21,3 +21,5 @@ export const error = (description?: string) => {
 
 export const formatFullName = (user: User) =>
   `${user.firstName} ${user.lastName}`;
+
+const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));

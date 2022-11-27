@@ -1,10 +1,8 @@
 import { Transition } from '@headlessui/react';
-import { useHookstate } from '@hookstate/core';
-import { localstored } from '@hookstate/localstored';
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useState } from 'react';
-import { customAxios, emptyUser } from '../../constants';
+import { customAxios } from '../../constants';
 import { error, success } from '../../helpers';
 
 type Props = {};
@@ -107,6 +105,8 @@ const Login = (props: Props) => {
                 <div className='flex items-center justify-between'>
                   <div className='flex items-center'>
                     <input
+                      disabled
+                      defaultChecked
                       id='remember-me'
                       name='remember-me'
                       type='checkbox'

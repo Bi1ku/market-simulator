@@ -10,17 +10,31 @@ datasource db {
 }
 
 model User {
-  id       String  @unique @id @default(uuid())
-  email    String  @unique
+  id        String  @id @unique @default(uuid())
+  email     String  @unique
   firstName String
-  lastName String
-  password String
-  currency Int     @default(10000)
-  stocks   Stock[]
+  lastName  String
+  password  String
+  currency  Int     @default(10000)
+  stocks    Stock[]
 }
 
 model Stock {
-  ticker  String @id @db.VarChar(5)
-  owner   User   @relation(fields: [ownerId], references: [id])
-  ownerId String    @unique
+  ticker    String  @id @unique
+  amount    Int
+  price     Float
+  owner     User        @relation(fields: [ownerId], references: [id])
+  ownerId   String      @unique
+  stockData StockData[]
+}
+
+model StockData {
+  id      String @id @default(uuid())
+  date    String
+  high    Float
+  low     Float
+  open    Float
+  close   Float
+  stock   Stock  @relation(fields: [ticker], references: [ticker])
+  ticker String
 }

@@ -16,7 +16,8 @@ function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
 
   useEffect(() => {
-    if (!localStorage.getItem('user')) router.push('/auth/login');
+    if (!localStorage.getItem('user') && !router.pathname.startsWith('/auth'))
+      router.push('/auth/login');
     setIsMount(true);
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
